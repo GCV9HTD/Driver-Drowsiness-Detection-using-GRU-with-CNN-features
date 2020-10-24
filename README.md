@@ -84,3 +84,7 @@ Requirements:
 _Command lines to execute code:_
 `python model_github.py --shape-predictor 'path/to/shape/predictor' --input_method 1 or 0`
 
+## Result
+
+![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/self_final.JPG)
+
