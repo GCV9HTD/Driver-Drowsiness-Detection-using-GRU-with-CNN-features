@@ -3,6 +3,19 @@
 This algorithm detects driver drowsiness detection using Deep learning concepts like , CNN, RNN, GRU.
 We use yawning as our basis
 
+## Dependencies
+* Tensorflow (I did this using tf 1.14, for tf 2.0 or greater some changes will be needed)
+* dlib
+* openCV
+* sklearn
+* matplotlib
+* os
+* [keras-surgeon](https://github.com/BenWhetton/keras-surgeon)
+* numpy
+* argparse
+* imutils
+* time
+
 ## Workflow
 
 1)We extract frames from incoming video stream using openCV.
