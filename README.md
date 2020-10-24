@@ -16,7 +16,10 @@ We use yawning as our basis
 * imutils
 * time
 
-![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/fig_1._3_50%25.jpg)
+<p align="center">
+  <img width="500" height="500" src="https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/fig_1._3_50%25.jpg">
+</p>
+
 ## Workflow
 
 1)We extract frames from incoming video stream using openCV.
