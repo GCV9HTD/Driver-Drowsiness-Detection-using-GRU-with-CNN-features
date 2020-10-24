@@ -1,28 +1,28 @@
 # Driver-Drowsiness-Detection-using-GRU-with-CNN-features
 
 This algorithm detects driver drowsiness detection using Deep learning concepts like , CNN, RNN, GRU.
-We use yawning as our basis
+We use yawning as basis
 
 ## Dependencies
-* python 3.6.10
-* Tensorflow (I did this using tf 1.14, for tf 2.0 or greater some changes will be needed)
-* dlib
-* openCV
-* sklearn
-* matplotlib
-* os
-* [keras-surgeon](https://github.com/BenWhetton/keras-surgeon)
-* numpy
-* argparse
-* imutils
-* time
+* Python 3.6.10
+* Tensorflow (Used tf 1.14, for tf 2.0 or greater some changes will be needed)
+* Dlib
+* OpenCV
+* Sklearn 
+* Matplotib
+* Os
+* [Keras-surgeon](https://github.com/BenWhetton/keras-surgeon)
+* Numpy
+* Argparse
+* Imutils
+* Time
 
 <p align="center">
   <img width="500" height="500" src="https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/fig_1._3_50%25.jpg">
 
 ## Workflow
 
-Incoming Video Feed->extract mouth region from individual frames->Send them to feature extractor->concatenate 32 frames->send to yawn detector->Yawning/Not Yawning
+Incoming Video Feed->Extract Mouth region from Individual Frames->Send to Feature Extractor->Concatenate 32 Frames->Send to Yawn Detector->Yawning/Not Yawning
 
 Three different models are used 
 1)Custom Dlib Shape Predictor
@@ -37,7 +37,7 @@ Three different models are used
 
 * parse_xml.py : Parses the train/test XML dataset files for eyes-only landmark coordinates.
 
-* train_shape_predictor.py : Accepts the parsed XML files to train our shape predictor with dlib, saves custom shape predictor with .dat file extension.
+* train_shape_predictor.py : Accepts the parsed XML files to train shape predictor with dlib, saves custom shape predictor with .dat file extension.
 
 * evaluate_shape_predictor.py : Calculates the Mean Average Error (MAE) of our custom shape predictor to test and validate our model.
 
@@ -70,7 +70,7 @@ _Command lines to execute code:_
 
 * **Dataset Used** : [YawDD](https://www.researchgate.net/publication/262255270_YawDD_A_yawning_detection_dataset)
 
-* Yawning and Not Yawning frames were extracted from YawDD dataset and sent to our feature extractor. The extracted features were then used to train our yawn detector.
+* Yawning and Not Yawning frames were extracted from YawDD dataset and sent to feature extractor. The extracted features were then used to train yawn detector.
 
 _Command lines to execute code:_
 
