@@ -1,7 +1,6 @@
 # Driver-Drowsiness-Detection-using-GRU-with-CNN-features
 
-This algorithm detects driver drowsiness detection using Deep learning concepts like , CNN, RNN, GRU.
-We use yawning as basis
+Typical methods used to identify drowsy drivers are physiological based such as heartbeat, pulse rate, and Electrocardiogram. Vehicle based methods include accelerator pattern, acceleration, and steering movements. Behavioral methods include yawn, Eye Closure, Eye Blinking, etc. Yawning is one of the major indicators to detect drowsiness, tiredness, and fatigue. We use yawning to detect driver drowsiness.
 
 ## Dependencies
 * Python 3.6.10
@@ -52,20 +51,14 @@ _Command lines to execute code:_
 
 ## Feature Extractor
 
-* Deep Convolution Neural Network model
-
 * **Dataset Used** : [AffectNet](http://mohammadmahoor.com/affectnet/)
 
-* Feature Extractor/feature_extractor_train.py: trains the model and saves it in .h5 format.
+* Feature Extractor/feature_extractor_train.py: Convolution Neural Network trains and is saved in .h5 format.
 
 * [keras-surgeon](https://github.com/BenWhetton/keras-surgeon) was used to remove the last dense layer used for classification to obtain features generated with in the model
 
 
-_Command lines to execute code:_
-
- `python extract_features.py`
- 
- `python feature_extractor_train.py`
+_Command lines to execute code:_  `python extract_features.py`  `python feature_extractor_train.py`
 
 ## Yawn Detector
 
@@ -73,9 +66,7 @@ _Command lines to execute code:_
 
 * Yawning and Not Yawning frames were extracted from YawDD dataset and sent to feature extractor. The extracted features were then used to train yawn detector.
 
-_Command lines to execute code:_
-
-`python yawn_detector.py`
+_Command lines to execute code:_ `python yawn_detector.py`
 
 
 
