@@ -45,6 +45,17 @@ Then, [keras-surgeon](https://github.com/BenWhetton/keras-surgeon) was used to r
 
 Yawn detector was trained on the features extracted from YawDD dataset using feature extractor.
 
+
+## Real time inference
+Real time inference can be done using model_32_to_1.py file present in folder Real Time Inference.
+
+Requirements:
+1)Custom dlib shape predictor
+2)Pre-trained feature extractor
+3)Pre-trained yawn detector
+
+Commnad Line `python model_github.py --shape-predictor path/to/shape/predictor --input_method 1 or 0`
+
 ## Dependencies
 
 
