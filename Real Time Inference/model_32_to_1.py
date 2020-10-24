@@ -91,7 +91,6 @@ while True:
 		out_feature_extractor=feature_extractor.predict(input_feature_extractor)
 		out_feature_extractor=out_feature_extractor.reshape(1,32,256)
 		out_yawn_detector=yawn_detector.predict(out_feature_extractor)
-		print(out_yawn_detector)
 		#check for threshold
 		if out_yawn_detector > yawn_detection_sigmoid:
 			yawn_detection=yawn_detection+1
