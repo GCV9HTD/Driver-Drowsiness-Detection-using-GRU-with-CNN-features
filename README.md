@@ -24,22 +24,16 @@ We use yawning as our basis
 
 Incoming Video Feed->extract mouth region from individual frames->Send them to feature extractor->concatenate 32 frames->send to yawn detector->Yawning/Not Yawning
 
-We use 3 model in it
-!)zcustom Dlib 
+Three different models are used 
+1)Custom Dlib Shape Predictor
 2Feature Extractor
 3)Yawn detector
 
-1)We extract frames from incoming video stream using openCV.
-2)Extracted frames are sent to custom dlib shape predictor to predict mouth region and extract it.
-2)We train our custom dlib shape predictor as guided in this well written article https://www.pyimagesearch.com/2019/12/16/training-a-custom-dlib-shape-predictor/
-
-3)Cropped mouth region in sent in the features extractor, which extracts required spatial features.
-4)Finally, features are concatenated in sets of 32 and are sent to yawn detector for yawning classification.
 
 ## Custom dlib shape predictor 
-Custom dlib shape predictor has been trained using steps provided [here](https://www.pyimagesearch.com/2019/12/16/training-a-custom-dlib-shape-predictor/)
+* Trained using steps provided [here](https://www.pyimagesearch.com/2019/12/16/training-a-custom-dlib-shape-predictor/)
 
-* Dataset Used : [i-bug 300W](https://ibug.doc.ic.ac.uk/resources/300-W/)
+* **Dataset Used** : [i-bug 300W](https://ibug.doc.ic.ac.uk/resources/300-W/)
 
 * parse_xml.py : Parses the train/test XML dataset files for eyes-only landmark coordinates.
 
@@ -47,7 +41,7 @@ Custom dlib shape predictor has been trained using steps provided [here](https:/
 
 * evaluate_shape_predictor.py : Calculates the Mean Average Error (MAE) of our custom shape predictor to test and validate our model.
 
-For running the files use
+_Command lines to execute code:_
 
 `python train_shape_predictor.py --training 'path/to/.xml/file/comtaining/mouth/only/landmarks' --model 'path/to/model.dat'`
 
@@ -59,22 +53,28 @@ For running the files use
 
 * Deep Convolution Neural Network model
 
-* Dataset Used [AffectNet](http://mohammadmahoor.com/affectnet/)
+* **Dataset Used** : [AffectNet](http://mohammadmahoor.com/affectnet/)
 
 * Feature Extractor/feature_extractor_train.py: trains the model and saves it in .h5 format.
 
 * [keras-surgeon](https://github.com/BenWhetton/keras-surgeon) was used to remove the last dense layer used for classification to obtain features generated with in the model
 
-Python command `python extract_features.py`
-               `python feature_extractor_train.py`
+
+_Command lines to execute code:_
+
+ `python extract_features.py`
+ 
+ `python feature_extractor_train.py`
 
 ## Yawn Detector
 
-* Dataset Used: [YawDD](https://www.researchgate.net/publication/262255270_YawDD_A_yawning_detection_dataset)
+* **Dataset Used** : [YawDD](https://www.researchgate.net/publication/262255270_YawDD_A_yawning_detection_dataset)
 
 * Yawning and Not Yawning frames were extracted from YawDD dataset and sent to our feature extractor. The extracted features were then used to train our yawn detector.
 
-python command `python yawn_detector.py`
+_Command lines to execute code:_
+
+`python yawn_detector.py`
 
 
 
@@ -86,5 +86,6 @@ Requirements:
 2)Trained Feature Extractor
 3)Trained Yawn Detector
 
-Commnad Line `python model_github.py --shape-predictor path/to/shape/predictor --input_method 1 or 0`
+_Command lines to execute code:_
+`python model_github.py --shape-predictor 'path/to/shape/predictor' --input_method 1 or 0`
 
