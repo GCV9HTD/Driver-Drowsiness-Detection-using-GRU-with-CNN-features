@@ -7,13 +7,12 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import cv2 as cv
 import os
-import time 
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 import math
 
-start=time.time()
 
+#Give each expression a number for classification
 def expression_to_label(expression):
 	if expression == 'Neutral':
 		return 0
@@ -31,48 +30,51 @@ image_height=50
 image_width=50
 
 
+#load images(resize them), labels as numpy arrays 
+
 #path='refined_data'
 
-#x_train=[]
-#y_train=[]
-#count=0
-#for expression in os.listdir(path):
-#	for image in os.listdir(os.path.join(path,expression)):
-#		img=cv.imread(os.path.join(path,expression,image),1)
-#		img=cv.resize(img,(image_height,image_width))
-#		x_train.append(img)
-#		y_train.append(expression_to_label(expression))
-#		count=count+1
-#		print("Loaded: ", count)
+x_train=[]
+y_train=[]
+count=0
+for expression in os.listdir(path):
+	for image in os.listdir(os.path.join(path,expression)):
+		img=cv.imread(os.path.join(path,expression,image),1)
+		img=cv.resize(img,(image_height,image_width))
+		x_train.append(img)
+		y_train.append(expression_to_label(expression))
+		count=count+1
+		print("Loaded: ", count)
 
 
 
-#x_train=np.array(x_train)
-#y_train=np.array(y_train)
-#x_test=np.array(x_test)
-#y_test=np.array(y_test)
+x_train=np.array(x_train)
+y_train=np.array(y_train)
+x_test=np.array(x_test)
+y_test=np.array(y_test)
 
-x_train=np.load('refined_data/50x50/x.npy', allow_pickle=True)
-y_train=np.load('refined_data/50x50/y.npy',allow_pickle=True)
-#x_test=np.load('124x124/x_test_5.npy', allow_pickle=True)
-#y_test=np.load('124x124/y_test_5.npy',allow_pickle=True)
+#save the numpy images for future use
+
+np.save('50x50/x.npy',x_train)
+np.save('50x50/y.npy',y_train)
+
+#load saved images in np array format
+#x_train=np.load('refined_data/50x50/x.npy', allow_pickle=True)
+#y_train=np.load('refined_data/50x50/y.npy',allow_pickle=True)
+
 
 print(x_train.shape)
 print(y_train.shape)
-#print(x_test.shape)
-#print(y_test.shape)
 
-
-#np.save('50x50/x.npy',x_train)
-#np.save('50x50/y.npy',y_train)
-#np.save('124x124/x_test_5.npy',x_test)
-#np.save('124x124/y_test_5.npy',y_test)
-
+#split into train test split
 x_train, x_test, y_train, y_test=train_test_split(x_train, y_train, test_size=0.15)
 
+#normalize pixel values
 x_train=x_train/255
 x_test=x_test/255
 print(y_train)
+
+#convert labels to one hot encodings
 y_train=to_categorical(y_train, num_classes=5)
 y_test=to_categorical(y_test, num_classes=5)
 
@@ -81,9 +83,11 @@ print(y_train.shape)
 print(x_test.shape)
 print(y_test.shape)
 
+#apply callbacks to analyze how our model is performing 
 
 tensorboard=tf.keras.callbacks.TensorBoard(log_dir='./logs')
 
+#learning rate decay call back
 def step_decay(epoch):
     initial_lrate = 1e-4
     drop = 0.1
@@ -93,9 +97,12 @@ def step_decay(epoch):
 
 lr_callback = tf.keras.callbacks.LearningRateScheduler(step_decay)
 
+#early stopping callback
 es_callback=tf.keras.callbacks.EarlyStopping(
     monitor='val_acc', patience=20)
-checkpoint_filepath='refined_data/2nd_part/best_accuracy_our_model_refined_2_50x50.h5'
+
+#model checkpoint call back
+checkpoint_filepath='refined_data/2nd_part/our_model_refined_2_50x50.h5'
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_filepath,
     save_weights_only=False,
@@ -104,6 +111,7 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     save_best_only=True,
     save_freq='epoch')
 
+#data augmentation to avoid overfitting
 datagen=ImageDataGenerator(
     rotation_range=20,
     width_shift_range=0.20,
@@ -114,7 +122,7 @@ datagen=ImageDataGenerator(
     #zca_whitening=True
     )
 
-
+#define our model
 model=tf.keras.Sequential([
 tf.keras.layers.Conv2D(16,(3,3),padding='same',activation='relu',input_shape=(image_height,image_width,3)),
 tf.keras.layers.Conv2D(16,(3,3),padding='same',activation='relu'),
@@ -133,24 +141,26 @@ tf.keras.layers.Dense(256,activation='relu'),
 tf.keras.layers.Dense(5,activation='softmax')
 ])
 
-
-
-
-
+#print model summary
 print(model.summary())
 print(len(model.layers))
+
+#define optimizer and compile our model
 
 opt=tf.keras.optimizers.Adam(lr=1e-4)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['acc'])
 
+#fit our model
 
 #history=model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test), batch_size=64)#first batch_size=256
 
 history=model.fit_generator(datagen.flow(x_train, y_train, batch_size=8), steps_per_epoch=len(x_train)/8, epochs=300 ,
  validation_data=(x_test, y_test), callbacks=[model_checkpoint_callback,es_callback])
 
-print("Timem Taken: ", time.time()-start)
+#save the final model for any future use
 model.save('refined_data/2nd_part/final_model_2.h5')
+
+#plot variation of acc, val_acc, loss, val_loss during training
 plt.plot(history.history['acc'])
 plt.plot(history.history['val_acc'])
 plt.plot(history.history['loss'])
