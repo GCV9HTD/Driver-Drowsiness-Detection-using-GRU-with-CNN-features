@@ -14,13 +14,19 @@ We use yawning as our basis
 
 ## Custom dlib shape predictor 
 Custom dlib shape predictor has been trained on [i-bug 300W](https://ibug.doc.ic.ac.uk/resources/300-W/) using steps provided [here](https://www.pyimagesearch.com/2019/12/16/training-a-custom-dlib-shape-predictor/)
+
 Custom dlib shape predictor folder contains the following file.
 
 1)parse_xml.py : Parses the train/test XML dataset files for eyes-only landmark coordinates.
 
-2)train_shape_predictor.py : Accepts the parsed XML files to train our shape predictor with dlib.
+2)train_shape_predictor.py : Accepts the parsed XML files to train our shape predictor with dlib, saves custom shape predictor with .dat file extension.
 
 3)evaluate_shape_predictor.py : Calculates the Mean Average Error (MAE) of our custom shape predictor to test and validate our model.
+
+For running the files use
+`python train_shape_predictor.py --training 'path/to/.xml/file/comtaining/mouth/only/landmarks' --model 'path/to/model.dat'`
+`python evaluate_shape_predictor.py --predictor 'path/to/trained/shape_predictor' --xml 'path/to/.xml/file/comtaining/mouth/only/landmarks'`
+`python parse_xml.py --input 'path/to/input/.xml/file'  --output 'path/to/output/.xml/file'`
 
 ## Dependencies
 
