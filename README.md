@@ -24,8 +24,11 @@ Custom dlib shape predictor folder contains the following file.
 3)evaluate_shape_predictor.py : Calculates the Mean Average Error (MAE) of our custom shape predictor to test and validate our model.
 
 For running the files use
+
 `python train_shape_predictor.py --training 'path/to/.xml/file/comtaining/mouth/only/landmarks' --model 'path/to/model.dat'`
+
 `python evaluate_shape_predictor.py --predictor 'path/to/trained/shape_predictor' --xml 'path/to/.xml/file/comtaining/mouth/only/landmarks'`
+
 `python parse_xml.py --input 'path/to/input/.xml/file'  --output 'path/to/output/.xml/file'`
 
 ## Dependencies
