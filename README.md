@@ -83,11 +83,11 @@ Real time inference can be done using model_32_to_1.py file present in folder Re
 
 Requirements:
 
-1)Custom Dlib shape predictor
+* Custom Dlib shape predictor
 
-2)Trained Feature Extractor
+* Trained Feature Extractor
 
-3)Trained Yawn Detector
+* Trained Yawn Detector
 
 _Command lines to execute code:_
 `python model_github.py --shape-predictor 'path/to/shape/predictor' --input_method 1 or 0`
