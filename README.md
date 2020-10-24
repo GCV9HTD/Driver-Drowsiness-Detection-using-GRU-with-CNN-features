@@ -88,3 +88,4 @@ _Command lines to execute code:_
 
 ![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/self_final.JPG)
 
+![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/yawdd_test.gif)
