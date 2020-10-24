@@ -24,10 +24,11 @@ We use yawning as basis
 
 Incoming Video Feed->Extract Mouth region from Individual Frames->Send to Feature Extractor->Concatenate 32 Frames->Send to Yawn Detector->Yawning/Not Yawning
 
-Three different models are used 
-1)Custom Dlib Shape Predictor
-2Feature Extractor
-3)Yawn detector
+Three different model sequentially form the algorithm.
+
+* Custom Dlib Shape Predictor
+* Feature Extractor
+* Yawn detector
 
 
 ## Custom dlib shape predictor 
