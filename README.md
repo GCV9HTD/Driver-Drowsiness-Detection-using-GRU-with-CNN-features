@@ -30,7 +30,7 @@ Three different model sequentially form the algorithm.
 * Yawn detector
 
 
-## Custom dlib shape predictor 
+### Custom dlib shape predictor 
 * Trained using steps provided [here](https://www.pyimagesearch.com/2019/12/16/training-a-custom-dlib-shape-predictor/)
 
 * **Dataset Used** : [i-bug 300W](https://ibug.doc.ic.ac.uk/resources/300-W/)
@@ -49,7 +49,7 @@ _Command lines to execute code:_
 
 `python parse_xml.py --input 'path/to/input/.xml/file'  --output 'path/to/output/.xml/file'`
 
-## Feature Extractor
+### Feature Extractor
 
 * **Dataset Used** : [AffectNet](http://mohammadmahoor.com/affectnet/)
 
@@ -60,7 +60,7 @@ _Command lines to execute code:_
 
 _Command lines to execute code:_  `python extract_features.py`  `python feature_extractor_train.py`
 
-## Yawn Detector
+### Yawn Detector
 
 * **Dataset Used** : [YawDD](https://www.researchgate.net/publication/262255270_YawDD_A_yawning_detection_dataset)
 
@@ -86,6 +86,6 @@ _Command lines to execute code:_
 
 ## Result
 
-![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/self_final.JPG)
+It can be seen in top right corner when the model detects a yawn.
 
 ![alt_text](https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/yawdd_test.gif)
