@@ -82,8 +82,11 @@ _Command lines to execute code:_
 Real time inference can be done using model_32_to_1.py file present in folder Real Time Inference.
 
 Requirements:
+
 1)Custom Dlib shape predictor
+
 2)Trained Feature Extractor
+
 3)Trained Yawn Detector
 
 _Command lines to execute code:_
