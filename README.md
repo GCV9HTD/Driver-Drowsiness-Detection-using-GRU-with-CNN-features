@@ -16,8 +16,7 @@ Typical methods used to identify drowsy drivers are physiological based such as 
 * Imutils
 * Time
 
-<p align="center">
-  <img width="500" height="500" src="https://github.com/srivastava-ayush/Driver-Drowsiness-Detection-using-GRU-with-CNN-features/blob/main/Real%20Time%20Inference/fig_1._3_50%25.jpg">
+
 
 ## Workflow
 
